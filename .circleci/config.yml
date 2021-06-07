@@ -8,7 +8,7 @@ orbs:
   node: circleci/node@2.0
 
 jobs:
-  test:
+  testing:
     executor: node/default
     steps:
       - checkout
@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Run Tests
           command: npm run test
-  deploy:
+  deploying:
     executor: serverless/default
     steps:
       - checkout
@@ -37,9 +37,11 @@ jobs:
           name: deploy
 
 workflows:
- test_and_deploy:
+ test:
   jobs:
-    - test
+    - testing
+    - deploying
+deploy:
     - deploy:
         requires:
           - test
