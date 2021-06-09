@@ -78,7 +78,7 @@ workflows:
     - sanity_check:
         context:
           - AWS_ACCESS
-    - testing:
+    - testing
     - deploying:
         context:
           - AWS_ACCESS
