@@ -68,11 +68,17 @@ workflows:
  pre_test:
   jobs:
     - sanity_check
+      context:
+        - AWS_ACCESS
     - testing
+        context:
+        - AWS_ACCESS
  test:
   jobs:
     - testing
     - deploying
+        context:
+        - AWS_ACCESS
 deploy:
     - deploy:
         requires:
